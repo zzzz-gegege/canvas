@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            color: green;
+        }
+    /* 全屏伪类样式 */
+        .a:-webkit-full-screen{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+        <div class="box">全屏</div>
+        <div class="box1">退出全屏</div>
+    </div>
+<script>
+    let a = document.querySelector(".a")
+    let box =document.querySelector(".box")
+    let box1 = document.querySelector(".box1")
+    // document.onmousemove = function (e){
+    //     box.style.transform = `translate(${e.clientX-50}px,${e.clientY-50}px)`
+    //     console.log("zhixing")
+    // }
+    box.onclick = function (){
+        a.webkitRequestFullScreen()
+        setTimeout(function (){
+            alert(document.fullscreen)
+        },1000)
+        if(!document.fullscreen){
+            console.log("全屏")
+        }
+    }
+    box1.onclick = function (){
+        document.exitFullscreen()
+        if(document.fullscreen){
+            console.log("非全屏")
+        }
+    }
+</script>
+</body>
+</html>

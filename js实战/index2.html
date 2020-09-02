@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list{
+            height: 200px;
+        }
+        .child{
+            height: 20%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<ul class="list">
+    <li class="child"></li>
+    <li class="child"></li>
+    <li class="child"></li>
+    <li class="child"></li>
+    <li class="child"></li>
+</ul>
+<script>
+    // let list = document.querySelector(".list")
+    // let li = document.querySelectorAll(".child")
+    // li.forEach((itme ,index) =>{
+    //     itme.innerHTML = `第${index+1}个儿子`
+    //     itme.onclick = function (){
+    //         this.parentNode.removeChild(this)
+    //     }
+    // })
+    // function N(){
+    //     this.name ="老王"
+    // }
+    // let obj = new N()
+    // console.log(obj)
+    function foo(a, b, c){
+    console.log(a, b, c)
+    console.log(this)
+    return 1
+  }
+    
+  Function.prototype.myBind = function (obj, ...args1) {
+    // this 是原本的函数
+    // console.log(this)
+    console.log(...args1)
+    let self = this
+    return function (...args2) {
+      // console.log(this)
+      // console.log(self)
+      return self.call(obj, ...args1,...args2)
+    }
+  }
+  let obj = {name: "obj"}
+  let f = foo.myBind(obj,[1,2])()
+  let arr = [1,2,3]
+  Function.prototype.myBind = function(obj, ...args1){
+    return (...args2) => (this.call(obj,...args1,...args2))
+  }
+</script>
+</body>
+</html>

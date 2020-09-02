@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let students =[ {age:18 , height : 176},
+                {age:16 , height : 173},
+                {age:14 , height : 171},
+                {age:19 , height : 175},
+                {age:11 , height : 174},
+                {age:13 , height : 177},
+                {age:12 , height : 179},
+                {age:17 , height : 178},
+                {age:20 , height : 180},
+                {age:10 , height : 170},
+                {age:21 , height : 169},
+            ]
+    function foo(arr){
+        let length = arr.length
+        //总共对比次数是length-1
+        for(let a = 0 ; a < length - 1  ;a++){
+            for(let i = 0 ; i < length -1 -a ; i++){
+            //相邻元素对比，每轮对比的次数递减一次
+            if(arr[i].height < arr[i+1].height ){
+                let obj = arr[i]
+                arr[i] = arr[i+1]
+                arr[i+1] = obj
+            }
+        }
+        }
+        return arr
+    }
+    console.log(foo(students))
+</script>
+</body>
+</html>

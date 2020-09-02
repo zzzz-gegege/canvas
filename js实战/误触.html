@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" style="height :100px"></div>
+    <script>
+        let box = document.querySelector(".box")
+        box.addEventListener("touchstart" ,function (){
+            this.addEventListener("touchstart" ,function (){
+                console.log("再次点击")
+            })
+            // console.log(this.isMove)
+        })
+        // box.addEventListener("touchend" ,function (){
+        //     console.log("抬起")
+        // })
+    </script>
+</body>
+</html>
